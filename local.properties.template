@@ -1,0 +1,13 @@
+# android/local.properties
+# ─────────────────────────────────────────────────────────────────────────────
+# KEEP THIS FILE PRIVATE — add it to .gitignore immediately.
+# Never commit passwords or keystore paths to version control.
+# ─────────────────────────────────────────────────────────────────────────────
+
+sdk.dir=/Users/YOUR_USERNAME/Library/Android/sdk
+
+# Keystore signing (used by build.gradle signingConfigs.release)
+KEYSTORE_PATH=../vibetext-release.keystore
+KEYSTORE_PASSWORD=YOUR_KEYSTORE_PASSWORD_HERE
+KEY_ALIAS=vibetext
+KEY_PASSWORD=YOUR_KEY_PASSWORD_HERE

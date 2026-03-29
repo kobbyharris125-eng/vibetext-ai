@@ -1,0 +1,52 @@
+// android/app/build.gradle
+// Drop this file into android/app/build.gradle after running: npx cap add android
+
+android {
+    namespace "com.vibetext.ai"
+    compileSdkVersion 34
+
+    defaultConfig {
+        applicationId "com.vibetext.ai"
+        minSdkVersion    24      // Android 7.0+  — covers 97 %+ of active devices
+        targetSdkVersion 34
+        versionCode      1       // Increment by 1 on every Play Store upload
+        versionName      "1.0.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    // ── RELEASE SIGNING ────────────────────────────────────────────────────
+    // Values are read from local.properties (never commit that file to git)
+    signingConfigs {
+        release {
+            storeFile     file(KEYSTORE_PATH)
+            storePassword KEYSTORE_PASSWORD
+            keyAlias      KEY_ALIAS
+            keyPassword   KEY_PASSWORD
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            // Uses the default debug keystore automatically
+        }
+        release {
+            signingConfig         signingConfigs.release
+            minifyEnabled         true
+            shrinkResources       true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    // Required for AAB (Android App Bundle)
+    bundle {
+        language   { enableSplit = true  }
+        density    { enableSplit = true  }
+        abi        { enableSplit = true  }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
